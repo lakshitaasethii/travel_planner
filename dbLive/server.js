@@ -37,6 +37,7 @@ db.connect(err => {
 // Middleware JSON parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 app.get('/searchDestination/:term', (req, res) => {
     const term = req.params.term;
