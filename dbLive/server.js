@@ -76,7 +76,43 @@ app.get('/searchPackage/:term', (req, res) => {
     });
 });
 
-app.get('/searchFlight/:term', (req, res) => {
+app.get('/searchFlight', (req, res) => {
+    const { departDate, departLoc, arriveLoc } = req.query;
+    const query = "SELECT id FROM FLIGHTS WHERE departDate = ? AND departLoc LIKE ? AND arriveLoc LIKE ?";
+    db.query(query, [`%${departDate}%`, `%${departLoc}%`, `%${arriveLoc}%`, (err, results) => {
+        if (err) {
+            res.status(500).send("Error searching for flight.");
+            throw err;
+        }
+        res.json(results);
+    });
+});
+
+app.get('/searchFlightDepartLoc/:term', (req, res) => {
+    const term = req.params.term;
+    const query = "SELECT id FROM FLIGHTS WHERE departLoc LIKE ?";
+    db.query(query, [`%${term}%`], (err, results) => {
+        if (err) {
+            res.status(500).send("Error searching for flight.");
+            throw err;
+        }
+        res.json(results);
+    });
+});
+
+app.get('/searchFlightDepartDate/:term', (req, res) => {
+    const term = req.params.term;
+    const query = "SELECT id FROM FLIGHTS WHERE departDate LIKE ?";
+    db.query(query, [`%${term}%`], (err, results) => {
+        if (err) {
+            res.status(500).send("Error searching for flight.");
+            throw err;
+        }
+        res.json(results);
+    });
+});
+
+app.get('/searchFlightArriveLoc/:term', (req, res) => {
     const term = req.params.term;
     const query = "SELECT id FROM FLIGHTS WHERE arriveLoc LIKE ?";
     db.query(query, [`%${term}%`], (err, results) => {
