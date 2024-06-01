@@ -79,7 +79,7 @@ app.get('/searchPackage/:term', (req, res) => {
 app.get('/searchFlight', (req, res) => {
     const { departDate, departLoc, arriveLoc } = req.query;
     const query = "SELECT id FROM FLIGHTS WHERE departDate = ? AND departLoc LIKE ? AND arriveLoc LIKE ?";
-    db.query(query, [`%${departDate}%`, `%${departLoc}%`, `%${arriveLoc}%`, (err, results) => {
+    db.query(query, [`%${departLoc}%`, `%${arriveLoc}%`], (err, results) => {
         if (err) {
             res.status(500).send("Error searching for flight.");
             throw err;
