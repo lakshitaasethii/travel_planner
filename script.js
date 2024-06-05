@@ -44,3 +44,27 @@ window.addEventListener("scroll", function () {
   }
 
 });
+
+// Expanding Search Bar
+document.addEventListener("DOMContentLoaded", function () {
+    const searchBtn = document.getElementById("search-btn");
+    const searchBar = document.getElementById("search-bar");
+
+    searchBtn.addEventListener("click", function () {
+        if (searchBar.classList.contains("expanded")) {
+            const searchTerm = searchBar.value;
+            if (searchTerm) {
+                fetch(`http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/searchFlightArriveLoc/${encodeURIComponent(searchTerm)}`) // Will need to hide this
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data); // Console log for testing
+                        const encodedData = encodeURIComponent(JSON.stringify(data));
+                        window.location.href = `search.html?data=${encodeURIComponent(encodedData)}`; // Redirect to search.html and passes retrieved data
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        } else {
+            searchBar.classList.toggle("expanded");
+        }
+    });
+});
