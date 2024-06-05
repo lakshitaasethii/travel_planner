@@ -254,7 +254,35 @@ body { background: var(--white); }
   color: inherit;
 }
 
-.search-btn { font-size: 20px; }
+.search-btn { 
+    font-size: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    width: 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    transition: width 0.3s ease;
+    opacity: 0;
+}
+
+.search-bar.expanded {
+    width: 200px;
+    background: white;
+    opacity: 1;
+    border-radius: 25px;
+    padding-right: 5px;
+}
 
 .header-bottom { border-bottom: 1px solid hsla(0, 0%, 100%, 0.1); }
 
