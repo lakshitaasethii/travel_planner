@@ -51,14 +51,18 @@ app.get('/searchDestination/:term', (req, res) => {
     });
 });
 
-// get for searching DB tables.
-app.get('/searchTour/:term', (req, res) => {
-    const term = req.params.term;
-    const query = "SELECT id FROM TOURS WHERE name LIKE ?";
-    db.query(query, [`%${term}%`], (err, results) => {
+app.get('/searchTour', (req, res) => {
+    const { destination, people, checkin, checkout } = req.query;
+    const sql = `SELECT * FOM TOURS
+                 WHERE location LIKE '%${destination}%'
+                 AND partySize >= '${people}'
+                 AND checkIn <= '${checkin}'
+                 AND checkOut >= '${checkout}'`;
+    db.query(sql, (err, results) => {
         if (err) {
-            res.status(500).send("Error searching for tour.");
+            res.status(500).send("Error searching for destination.");
             throw err;
+            return;
         }
         res.json(results);
     });
