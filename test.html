@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Destination</title>
+    <script>
+        async function searchDestination() {
+            const term = document.getElementById('searchTerm').value;
+            const response = await fetch(`http://ec2-15-222-3-80.ca-central-1.compute.amazonaws.com:3000/searchDestination/${term}`);
+            const results = await response.json();
+            document.getElementById('results').innerText = JSON.stringify(results, null, 2);
+        }
+    </script>
+</head>
+<body>
+    <h1>Search Destination</h1>
+    <input type="text" id="searchTerm" placeholder="Enter destination name">
+    <button onclick="searchDestination()">Search</button>
+    <pre id="results"></pre>
+</body>
+</html>
+
