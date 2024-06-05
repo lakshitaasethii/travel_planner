@@ -11,14 +11,18 @@ document.addEventListener("DOMContentLoaded", function () {
         if (data.length > 0) {
             data.forEach(tour => {
                 const resultItem = document.createElement('button');
+                const checkInDateTime = new Date(tour.checkIn);
+                const formattedCheckIn = checkInDateTime.toLocaleDateString();
+                const checkOutDateTime = new Date(tour.checkOut);
+                const formattedCheckOut = checkOutDateTime.toLocaleDateString();
                 resultItem.classList.add('result-item');
                 resultItem.innerHTML = `
                     <h2>${tour.location}</h2>
                     <p>Destination: ${tour.country}</p>
                     <p>Description: ${tour.description}</p>
                     <p>Party Size: ${tour.partySize}</p>
-                    <p>Check-In Date: ${tour.checkIn}</p>
-                    <p>Check-Out Date: ${tour.checkOut}</p>
+                    <p>Check-In Date: ${formattedCheckIn}</p>
+                    <p>Check-Out Date: ${formattedCheckOut}</p>
                     <p>Rating: ${tour.rating}</p>
                 `;
                 resultItem.addEventListener('click', function () {
