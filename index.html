@@ -186,17 +186,17 @@
       <section class="tour-search">
         <div class="container">
 
-          <form action="" class="tour-search-form">
+          <form class="tour-search-form">
 
             <div class="input-wrapper">
               <label for="destination" class="input-label">Search Destination*</label>
 
-              <input type="text" name="destination" id="destination" required placeholder="Enter Destination"
+              <input type="text" name="destination" id="tour-destination" required placeholder="Enter Destination"
                 class="input-field">
             </div>
 
             <div class="input-wrapper">
-              <label for="people" class="input-label">Fax Number</label>
+              <label for="people" class="input-label">Party Size</label>
 
               <input type="number" name="people" id="people" required placeholder="No.of People" class="input-field">
             </div>
@@ -204,16 +204,16 @@
             <div class="input-wrapper">
               <label for="checkin" class="input-label">Checkin Date**</label>
 
-              <input type="date" name="checkin" id="checkin" required class="input-field">
+              <input type="date" name="checkin" id="tour-checkin" required class="input-field">
             </div>
 
             <div class="input-wrapper">
               <label for="checkout" class="input-label">Checkout Date*</label>
 
-              <input type="date" name="checkout" id="checkout" required class="input-field">
+              <input type="date" name="checkout" id="tour-checkout" required class="input-field">
             </div>
 
-            <button type="submit" class="btn btn-secondary">Inquire now</button>
+            <button type="submit" class="btn btn-secondary" id="tour-submit">Inquire now</button>
 
           </form>
 
@@ -810,6 +810,7 @@
     - custom js link
   -->
   <script src="./src/js/script.js"></script>
+  <script src="./src/js/tourSearch.js"></script>
 
   <!-- 
     - ionicon link
