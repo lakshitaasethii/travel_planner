@@ -1,7 +1,7 @@
 'use strict';
 
 /*
- * Retrieves flight ids from script.js based on term entered into search bar.
+ * Retrieves flight ids sent from script.js based on term entered into search bar.
  * Displays each database item as a button which redirects to the flight.html page.
 */
 
@@ -19,12 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
                     .then(response => response.json())
                     .then(flightData => {
                         flightData.forEach(flight => {
+                            const departDateTime = new Date(flight.departDate);
+                            const formattedDepartDate = departDateTime.toLocaleString();
+                            const arriveDateTime = new Date(flight.arriveDate);
+                            const formattedArriveDate = arriveDateTime.toLocaleString();
                             const resultItem = document.createElement('button');
                             resultItem.classList.add('result-item');
                             resultItem.innerHTML = `
-                                <h2>${flight.arriveLoc}</h2>
-                                <p>Departs from ${flight.departLoc} at ${flight.departDate}</p>
-                                <p>Arrival: ${flight.arriveDate}</p>
+                                <h2>${flight.departLoc} at ${formattedDepartDate}</h2>
+                                <p>Departs from ${flight.arriveLoc} at ${formattedArriveDate}</p>
                                 <p><strong>Company: </strong>${flight.flightCompany}</p>
                             `;
                             resultItem.addEventListener('click', function () {
