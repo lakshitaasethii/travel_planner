@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     .then(data => {
                         console.log(data); // Console log for testing
                         const encodedData = encodeURIComponent(JSON.stringify(data));
-                        window.location.href = `search.html?data=${encodeURIComponent(encodedData)}`; // Redirect to search.html and passes retrieved data
+                        window.location.href = `flightSearch.html?data=${encodeURIComponent(encodedData)}`; // Redirect to search.html and passes retrieved data
                     })
                     .catch(error => console.error('Error:', error));
             }
