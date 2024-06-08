@@ -1387,3 +1387,61 @@ address {
   .container { max-width: 1180px; }
 
 }
+.header-buttons {
+  display: flex;
+  gap: 10px; /* Adjust the gap between the buttons as needed */
+}
+
+.header-buttons .btn {
+  margin: 0;
+}
+
+
+/* Sign In Section */
+.signin-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 200px); /* Adjust based on header height */
+  background-color: #f7f7f7;
+}
+
+.signin-box {
+  background: white;
+  padding: 20px 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.signin-form .form-group {
+  margin-bottom: 20px;
+}
+
+.signin-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.signin-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signin-form .btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.signin-form .btn:hover {
+  background-color: #0056b3;
+}
