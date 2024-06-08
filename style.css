@@ -254,7 +254,14 @@ body { background: var(--white); }
   color: inherit;
 }
 
-.search-btn { font-size: 20px; }
+.search-btn { 
+    font-size: 20px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+}
 
 .header-bottom { border-bottom: 1px solid hsla(0, 0%, 100%, 0.1); }
 
@@ -263,6 +270,27 @@ body { background: var(--white); }
   justify-content: space-between;
   align-items: center;
   padding-block: 15px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    width: 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+    transition: width 0.3s ease;
+    opacity: 0;
+}
+
+.search-bar.expanded {
+    width: 200px;
+    background: white;
+    opacity: 1;
+    border-radius: 25px;
+    padding-right: 5px;
 }
 
 .social-list {
@@ -1248,8 +1276,86 @@ address {
 
 }
 
+/*
+    SEARCH PAGE
+*/
+
+#search-content {
+    margin-top: 120px;
+    background-color:dimgrey;
+}
 
 
+#results .result-item {
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+    padding: 15px;
+    display: block;
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+}
+
+
+#results .result-item:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+#results {
+    margin-top: 50px;
+    padding: 15px; /* Padding inside the container */
+    display: flex;
+    flex-direction: column; /* Make children descend vertically */
+}
+
+/*
+    TOUR PAGE
+*/
+
+.tour-content {
+    display: block;
+    width: 65%;
+    margin-top: 85px;
+}
+
+#tour-page {
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 25px;
+    padding: 15px;
+    display: block;
+    width: 65%;
+    text-align: left;
+    font-size: 16px;
+    transition: box-shadow 0.3s ease;
+    padding-left: 50px;
+}
+
+#tour-flights {
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 65%;
+    text-align: center;
+    font-size: 16px;
+    transition: box-shadow 0.3s ease;
+}
+
+#tour-flight-results button {
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 5px;
+}
 
 
 /**
@@ -1280,4 +1386,62 @@ address {
 
   .container { max-width: 1180px; }
 
+}
+.header-buttons {
+  display: flex;
+  gap: 10px; /* Adjust the gap between the buttons as needed */
+}
+
+.header-buttons .btn {
+  margin: 0;
+}
+
+
+/* Sign In Section */
+.signin-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 200px); /* Adjust based on header height */
+  background-color: #f7f7f7;
+}
+
+.signin-box {
+  background: white;
+  padding: 20px 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.signin-form .form-group {
+  margin-bottom: 20px;
+}
+
+.signin-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.signin-form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.signin-form .btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.signin-form .btn:hover {
+  background-color: #0056b3;
 }
