@@ -20,16 +20,31 @@ export const AuthContextProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
 
-    createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-        })
+    const signInWithEmailAndPassword = async (email, password) => {
+        const response = await fetch("http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
+        });
+        const data = await response.json();
+        if (data.token) {
+            localStorage.setItem("token", data.token);
+            setUser(data.user);
+        }
+    };
 
-    signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            const user = userCredential.user;
-        })
-    
+    const createUserWithEmailAndPassword = async (email, password) => {
+        const response = await fetch("http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
+        });
+        const data = await response.json();
+        if (data.token) {
+            localStorage.setItem("token", data.token);
+            setUser(data.user);
+        }
+    };
 
     const gitHubSignIn = async () => {
         const provider = new GithubAuthProvider();
@@ -62,15 +77,29 @@ export const AuthContextProvider = ({ children }) => {
     };
 
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            setUser(currentUser);
-        });
-        return () => unsubscribe();
-    }, [user]);
-
+        const checkAuthState = async () => {
+            const token = localStorage.getItem("token");
+            if (token) {
+                const response = await fetch("http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/verifyToken", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${token}`
+                    }
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    setUser(data.user);
+                } else {
+                    localStorage.removeItem("token");
+                }
+            }
+        };
+        checkAuthState();
+    }, []);
 
     return (
-        <AuthContext.Provider value={{ user, gitHubSignIn, googleSignIn, firebaseSignOut }}>
+        <AuthContext.Provider value={{ user, signInWithEmailAndPassword, createUserWithEmailAndPassword, gitHubSignIn, googleSignIn, firebaseSignOut }}>
             {children}
         </AuthContext.Provider>
     );
