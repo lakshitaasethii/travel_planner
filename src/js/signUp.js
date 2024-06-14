@@ -1,5 +1,4 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebase.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const signUpForm = document.querySelector(".signin-form");
@@ -20,8 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             alert("Signed up successfully!");
-            // Optionally, redirect the user to another page
-            // window.location.href = "/welcome.html";
+            window.location.href = "../index.html";
         } catch (error) {
             console.error("Error signing up: ", error);
             alert("Failed to sign up. Please try again.");
