@@ -1,46 +1,50 @@
-'use strict';
+// Sample data for destinations with images
+const destinations = [
+    { country: "Spain", city: "Barcelona", description: "Barcelona is known for its art and architecture.", rating: 5, imageUrl: "images/barcelona.jpg" },
+    { country: "US", city: "New York City", description: "New York City is the cultural and financial capital of the world.", rating: 4, imageUrl: "images/newyork.jfif" },
+    { country: "India", city: "Jaipur", description: "Jaipur is famous for its forts and palaces.", rating: 4, imageUrl: "images/jaipur.jfif" },
+    { country: "New Zealand", city: "Queenstown", description: "Queenstown is a popular destination for adventure sports.", rating: 5, imageUrl: "images/queenstown.jfif" },
+    { country: "Switzerland", city: "Zurich", description: "Zurich is known for its high quality of life and financial institutions.", rating: 4, imageUrl: "images/zurich.jfif" },
+];
 
-/**
- * navbar toggle
- */
+const destinationsList = document.getElementById('destinationsList');
+const moreDestinationsBtn = document.getElementById('moreDestinationsBtn');
 
-const overlay = document.querySelector("[data-overlay]");
-const navOpenBtn = document.querySelector("[data-nav-open-btn]");
-const navbar = document.querySelector("[data-navbar]");
-const navCloseBtn = document.querySelector("[data-nav-close-btn]");
-const navLinks = document.querySelectorAll("[data-nav-link]");
+moreDestinationsBtn.addEventListener('click', function() {
+    // Clear previous destinations
+    destinationsList.innerHTML = '';
 
-const navElemArr = [navOpenBtn, navCloseBtn, overlay];
+    // Loop through destinations and create HTML for each
+    destinations.forEach(destination => {
+        const destinationBox = document.createElement('div');
+        destinationBox.classList.add('destination-box');
 
-const navToggleEvent = function (elem) {
-  for (let i = 0; i < elem.length; i++) {
-    elem[i].addEventListener("click", function () {
-      navbar.classList.toggle("active");
-      overlay.classList.toggle("active");
+        // Create image element
+        const imgElement = document.createElement('img');
+        imgElement.src = destination.imageUrl;
+        imgElement.alt = `${destination.country} Image`;
+        destinationBox.appendChild(imgElement);
+
+        const nameElement = document.createElement('div');
+        nameElement.classList.add('destination-name');
+        nameElement.textContent = `${destination.country} - ${destination.city}`;
+        destinationBox.appendChild(nameElement);
+
+        const descriptionElement = document.createElement('div');
+        descriptionElement.classList.add('destination-description');
+        descriptionElement.textContent = destination.description;
+        destinationBox.appendChild(descriptionElement);
+
+        const ratingElement = document.createElement('div');
+        ratingElement.classList.add('rating');
+        // Create star icons for rating
+        for (let i = 0; i < destination.rating; i++) {
+            const starIcon = document.createElement('span');
+            starIcon.innerHTML = '&#9733;'; // Star icon (you can use a star icon of your choice)
+            ratingElement.appendChild(starIcon);
+        }
+        destinationBox.appendChild(ratingElement);
+
+        destinationsList.appendChild(destinationBox);
     });
-  }
-}
-
-navToggleEvent(navElemArr);
-navToggleEvent(navLinks);
-
-
-
-/**
- * header sticky & go to top
- */
-
-const header = document.querySelector("[data-header]");
-const goTopBtn = document.querySelector("[data-go-top]");
-
-window.addEventListener("scroll", function () {
-
-  if (window.scrollY >= 200) {
-    header.classList.add("active");
-    goTopBtn.classList.add("active");
-  } else {
-    header.classList.remove("active");
-    goTopBtn.classList.remove("active");
-  }
-
 });
