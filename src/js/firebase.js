@@ -1,10 +1,10 @@
-re// Importing necessary functions from Firebase SDK
+// Importing necessary functions from Firebase SDK
 // 'initializeApp' is used to initialize the Firebase app with a given configuration.
 import { initializeApp } from "firebase/app";
 // Import 'getAuth' function for Firebase authentication.
 // This is used to initialize the authentication service.
 import { getAuth } from "firebase/auth";
-
+require(dotenv).config;
 
 // Your web app's Firebase configuration
 
