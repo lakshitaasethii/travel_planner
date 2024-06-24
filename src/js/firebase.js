@@ -1,4 +1,4 @@
-// Importing necessary functions from Firebase SDK
+re// Importing necessary functions from Firebase SDK
 // 'initializeApp' is used to initialize the Firebase app with a given configuration.
 import { initializeApp } from "firebase/app";
 // Import 'getAuth' function for Firebase authentication.
