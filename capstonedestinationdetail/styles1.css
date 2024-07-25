@@ -1,0 +1,66 @@
+/* styles1.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.destinations-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.destination-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 15px;
+    width: 30%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.destination-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+.destination-box img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.destination-info {
+    margin-top: 10px;
+}
+
+.destination-name {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.destination-description {
+    color: #555;
+    margin: 5px 0;
+}
+
+.rating {
+    color: #f39c12;
+}
