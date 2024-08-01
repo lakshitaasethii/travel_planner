@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New York - Detailed Information</title>
+    <link rel="stylesheet" href="styles1.css">
+    <style> body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+    h1 {
+        font-size: 5em; /* Increased header size */
+        font-weight: bold;
+        background-color:rgb(5, 114, 165);
+        color: white;
+        margin-top: 150px; /* Margin above the header */
+        margin-bottom: 20px; /* Space below header */
+        animation: fadeInUp 1s ease-out;
+    }
+
+    h2 {
+        font-size: 1em; /* Increased header size */
+        font-weight: bold;
+        background-color:rgb(5, 114, 165);
+        color:white;  
+        animation: fadeInUp 1s ease-out;
+
+    }
+    h3{ font-size: 1em; /* Increased header size */
+        font-weight: bold;
+        background-color:rgb(5, 114, 165);
+        color:white;
+        animation: fadeInUp 1s ease-out;
+     }
+    .container {
+        background-color: white;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        max-width: 900px; /* Increased max-width for better spacing */
+        width: 100%;
+        text-align: center;
+        overflow: hidden; /* Ensure content fits within the container */
+    }
+    .header-animation {
+        font-size: 4em; /* Increased header size */
+        font-weight: bold;
+        color: #333;
+        animation: fadeInUp 1s ease-out;
+        margin-bottom: 20px; /* Space below header */
+        white-space: nowrap; /* Prevent text from wrapping */
+        z-index: 1; /* Ensure header is on top of other content */
+        position: relative; /* Ensure proper positioning */
+    }
+    .destination-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative; /* Ensure proper positioning relative to the header */
+        z-index: 0; /* Content below the header */
+    }
+    .destination-image img {
+        width: 80%; /* Reduced image size */
+        max-width: 600px; /* Maximum width for the image */
+        border-radius: 10px;
+    }
+    .additional-info {
+        margin-top: 20px;
+    }
+    .weather-btn, .news-btn, #bookFlightBtn, .book-now-btn {
+        display: inline-block;
+        margin: 10px 5px;
+        padding: 10px 20px;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .weather-btn:hover, .news-btn:hover, #bookFlightBtn:hover, .book-now-btn:hover {
+        background-color: #0056b3;
+    }
+    #weather, #local-news {
+        margin-top: 10px;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: opacity 0.5s ease, max-height 0.5s ease;
+    }
+    #local-news li {
+        list-style: none;
+        margin-bottom: 5px;
+    }
+    .show {
+        opacity: 1;
+        max-height: 200px;
+    }
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Zurich</h1>
+        <div class="destination-info">
+            <div class="destination-image">
+                <img src="images/zurich.jfif" alt="Zurich">
+            </div>
+            <div class="additional-info">
+                <p class="destination-description">Zurich is the largest city in Switzerland and the capital of the canton of Zurich. It is located in north-central Switzerland, at the northwestern tip of Lake Zurich.</p>
+                <h2>Weather</h2>
+                <button class="weather-btn" onclick="fetchWeather('Zurich')">
+                    <span class="icon">☀️</span>
+                    Check Weather</button>
+                <div id="weather"></div>
+
+                <h2>Local News</h2>
+                <button class="news-btn" onclick="fetchNews('Zurich')">
+                    <span class="icon">📰</span>
+                    Local News</button>
+                <ul id="local-news"></ul>
+                <h3>Book the Destination
+                     Right Now!</h3>
+
+                <div class="booking-options">
+                    <button id="bookFlightBtn">Book Flight</button>
+                    <br>
+                    <a href="#" class="book-now-btn">Go to Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script1.js"></script>
+    <script>
+        // Function to fetch weather data
+        function fetchWeather(city) {
+            fetch('https://www.weatherapi.com/weather/q/Zurich' )
+                .then(response => response.json())
+                .then(data => {
+                    const weatherDiv = document.getElementById('weather');
+                    weatherDiv.innerHTML = `
+                        <p>Current Temperature: ${data.current.temp_c}°C</p>
+                        <p>Condition: ${data.current.condition.text}</p>
+                    `;
+                    weatherDiv.classList.add('show');
+                })
+                .catch(error => console.error('Error fetching weather:', error));
+
+            // Open the live Barcelona current weather page in a new tab
+            window.open('https://www.weatherapi.com/weather/q/Zurich', '_blank');
+        }
+
+        // Function to fetch local news
+        function fetchNews(city) {
+            fetch('https://news.google.com/search?for=zurich+switzerland+news+today&hl=en-CA&gl=CA&ceid=CA%3Aen')
+                .then(response => response.json())
+                .then(data => {
+                    const newsList = document.getElementById('local-news');
+                    newsList.innerHTML = ''; // Clear previous news
+                    data.articles.slice(0, 5).forEach(article => {
+                        const li = document.createElement('li');
+                        li.textContent = article.title;
+                        newsList.appendChild(li);
+                    });
+                    newsList.classList.add('show');
+                })
+                .catch(error => console.error('Error fetching news:', error));
+
+            // Open the live Barcelona news page in a new tab
+            window.open('https://news.google.com/search?for=zurich+switzerland+news+today&hl=en-CA&gl=CA&ceid=CA%3Aen', '_blank');
+        }
+    </script>
+</body>
+</html>
+
+
+
