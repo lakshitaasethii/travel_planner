@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
             };
 
             // Send user data to server
-            const response = await fetch("http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/createUser", {
+            const response = await fetch("https://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/createUser", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
