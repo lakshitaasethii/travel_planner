@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
         };
 
         // Send PUT request to update user data
-        fetch(`http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/updateUser/${encodeURIComponent(userId)}`, {
+        fetch(`https://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/updateUser/${encodeURIComponent(userId)}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
