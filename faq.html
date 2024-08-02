@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ - Tourly Flight Booking</title>
+    <link rel="stylesheet" href="./src/css/style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            background-image: url("./src/img/hero-banner.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-color: hsla(0, 0%, 0%, 0.7);
+            background-blend-mode: overlay;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 150px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+            .faq-item:last-child {
+                border-bottom: none;
+            }
+
+        .faq-question {
+            cursor: pointer;
+            padding: 15px;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+            margin: 0;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+            .faq-question:hover {
+                background-color: #0056b3;
+            }
+
+        .faq-answer {
+            display: none;
+            padding: 15px;
+            background-color: #f1f1f1;
+            border-radius: 4px;
+        }
+
+            .faq-answer.show {
+                display: block;
+            }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 8px;
+            position: relative;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .close {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        .modal-footer {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+            .modal-footer button {
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 16px;
+                transition: background-color 0.3s;
+            }
+
+            .modal-footer .cancel {
+                background-color: #ccc;
+            }
+
+                .modal-footer .cancel:hover {
+                    background-color: #999;
+                }
+
+            .modal-footer .add {
+                background-color: #007bff;
+                color: white;
+            }
+
+                .modal-footer .add:hover {
+                    background-color: #0056b3;
+                }
+
+        /* Button Style */
+        #openModal {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+            #openModal:hover {
+                background-color: #0056b3;
+            }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+  <body>
+      <header class="header-main" id="header-main" data-header>
+      </header>
+      <div class="faq-container">
+          <h1>FAQ - Flight Booking</h1>
+
+          <div class="faq-item">
+              <h2 class="faq-question">How can I book a flight?</h2>
+              <div class="faq-answer">
+                  <p>
+                      To book a flight, simply enter your departure and arrival cities,
+                      select your travel dates, and choose your preferred flight from the
+                      available options. Follow the prompts to complete your booking.
+                  </p>
+              </div>
+          </div>
+
+          <div class="faq-item">
+              <h2 class="faq-question">Can I cancel my flight booking?</h2>
+              <div class="faq-answer">
+                  <p>
+                      Yes, you can cancel your flight booking. Please refer to our
+                      cancellation policy for details on fees and deadlines. You can
+                      cancel your booking through your account or by contacting our
+                      customer service.
+                  </p>
+              </div>
+          </div>
+
+          <div class="faq-item">
+              <h2 class="faq-question">
+                  What if I need to change my flight details?
+              </h2>
+              <div class="faq-answer">
+                  <p>
+                      If you need to change your flight details, you can do so through
+                      your account or by contacting our support team. Please note that
+                      changes may be subject to availability and additional fees.
+                  </p>
+              </div>
+          </div>
+
+          <div class="faq-item">
+              <h2 class="faq-question">What payment methods do you accept?</h2>
+              <div class="faq-answer">
+                  <p>
+                      We accept a variety of payment methods including major credit cards,
+                      debit cards, and PayPal. You can select your preferred payment
+                      method during the booking process.
+                  </p>
+              </div>
+          </div>
+
+          <div class="faq-item">
+              <h2 class="faq-question">
+                  How do I check the status of my flight booking?
+              </h2>
+              <div class="faq-answer">
+                  <p>
+                      You can check the status of your flight booking by logging into your
+                      account and viewing your booking history. You will also receive
+                      email notifications with updates about your flight.
+                  </p>
+              </div>
+          </div>
+
+          <div class="faq-item">
+              <h2 class="faq-question">
+                  Do I need to provide a passport number to book a flight?
+              </h2>
+              <div class="faq-answer">
+                  <p>
+                      Generally, you do not need to provide your passport number to book a
+                      flight. However, for international flights, you may be required to
+                      enter your passport details when completing your booking.
+                  </p>
+              </div>
+          </div>
+
+          <div class="faq-item">
+              <h2 class="faq-question">
+                  What should I do if I have special requests for my flight?
+              </h2>
+              <div class="faq-answer">
+                  <p>
+                      If you have special requests, such as dietary needs or wheelchair
+                      assistance, please contact our customer service team after booking
+                      your flight. We will do our best to accommodate your needs.
+                  </p>
+              </div>
+          </div>
+
+          <!-- Button to open modal -->
+          <button id="openModal">Add New Question</button>
+      </div>
+
+      <!-- Modal Structure -->
+      <div id="myModal" class="modal">
+          <div class="modal-content">
+              <span class="close">&times;</span>
+              <h2>Add New FAQ</h2>
+              <form id="faqForm">
+                  <label for="question">Question:</label><br />
+                  <input type="text"
+                         id="question"
+                         name="question"
+                         required /><br /><br />
+                  <label for="answer">Answer:</label><br />
+                  <textarea id="answer" name="answer" rows="4" required></textarea><br /><br />
+                  <div class="modal-footer">
+                      <button type="button" class="cancel" id="cancelBtn">Cancel</button>
+                      <button type="submit" class="add">Add Question</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+
+
+
+      <script>
+          // Toggle FAQ answers
+          document.querySelectorAll(".faq-question").forEach((question) => {
+              question.addEventListener("click", () => {
+                  const answer = question.nextElementSibling;
+                  answer.classList.toggle("show");
+              });
+          });
+
+          // Modal functionality
+          const modal = document.getElementById("myModal");
+          const openModalBtn = document.getElementById("openModal");
+          const closeBtn = document.querySelector(".close");
+          const cancelBtn = document.getElementById("cancelBtn");
+          const faqForm = document.getElementById("faqForm");
+
+          openModalBtn.addEventListener("click", () => {
+              modal.style.display = "block";
+          });
+
+          closeBtn.addEventListener("click", () => {
+              modal.style.display = "none";
+          });
+
+          cancelBtn.addEventListener("click", () => {
+              modal.style.display = "none";
+          });
+
+          window.addEventListener("click", (event) => {
+              if (event.target === modal) {
+                  modal.style.display = "none";
+              }
+          });
+
+          faqForm.addEventListener("submit", (event) => {
+              event.preventDefault();
+              const question = document.getElementById("question").value;
+              const answer = document.getElementById("answer").value;
+
+              // Create new FAQ item
+              const faqContainer = document.querySelector(".faq-container");
+              const newFaqItem = document.createElement("div");
+              newFaqItem.classList.add("faq-item");
+
+              newFaqItem.innerHTML = `
+                                  <h2 class="faq-question">${question}</h2>
+                                  <div class="faq-answer">
+                                      <p>${answer}</p>
+                                  </div>
+                              `;
+
+              faqContainer.appendChild(newFaqItem);
+
+              // Reapply FAQ question click functionality
+              newFaqItem
+                  .querySelector(".faq-question")
+                  .addEventListener("click", () => {
+                      const answerDiv = newFaqItem.querySelector(".faq-answer");
+                      answerDiv.classList.toggle("show");
+                  });
+
+              // Close the modal and reset the form
+              modal.style.display = "none";
+              faqForm.reset();
+          });
+      </script>
+      <script src="./src/js/script.js"></script>
+      <script type="module" src="./src/js/header.js"></script>
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>

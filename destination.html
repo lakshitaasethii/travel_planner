@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination - Detailed Information</title>
+    <link rel="stylesheet" href="src/css/style.css">
+    <link rel="stylesheet" href="src/css/destination.css">
+</head>
+<body>
+    <header class="header-main" id="header-main" data-header>
+    </header>
+    <div class="destcontainer">
+        <h1 id="dest-city">Destination Name</h1>
+        <div class="destination-info">
+            <div class="destination-image">
+                <img src="" alt="">
+            </div>
+            <div class="additional-info">
+                <p class="destination-description">Description will be inserted here.</p>
+                <h2>Weather</h2>
+                <button class="weather-btn" onclick="fetchWeather()">
+                    <span class="icon">☀️</span>
+                    Check Weather
+                </button>
+                <div id="weather"></div>
+
+                <h2>Local News</h2>
+                <button class="news-btn" onclick="fetchNews()">
+                    <span class="icon">📰</span>
+                    Local News
+                </button>
+                <ul id="local-news"></ul>
+                <h3>Book the Destination Right Now!</h3>
+
+                <div class="booking-options">
+                    <button id="bookFlightBtn">See Flights</button>
+                    <br>
+                    <a href="packageSearch.html" class="book-now-btn">See Packages</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/js/destination.js"></script>
+    <script type="module" src="src/js/header.js"></script>
+    <script src="./src/js/script.js"></script>
+    <script>
+        // Function to fetch weather data
+        function fetchWeather() {
+            const city = document.getElementById("dest-city");
+            const location = city.innerText;
+            fetch(`https://www.weatherapi.com/weather/q/${encodeURIComponent(location)}`)
+                .then(response => response.json())
+                .then(data => {
+                    const weatherDiv = document.getElementById('weather');
+                    weatherDiv.innerHTML = `
+                            <p>Current Temperature: ${data.current.temp_c}°C</p>
+                            <p>Condition: ${data.current.condition.text}</p>
+                        `;
+                    weatherDiv.classList.add('show');
+                })
+                .catch(error => console.error('Error fetching weather:', error));
+
+            window.open(`https://www.weatherapi.com/weather/q/${encodeURIComponent(location)}`, '_blank');
+        }
+
+        // Function to fetch news data
+        function fetchNews() {
+            const city = document.getElementById("dest-city");
+            const location = city.innerText;
+            fetch(`https://newsapi.org/v2/everything?q=${encodeURIComponent(location)}&apiKey=YOUR_NEWS_API_KEY`)
+                .then(response => response.json())
+                .then(data => {
+                    const newsList = document.getElementById('local-news');
+                    newsList.innerHTML = ''; // Clear previous news
+                    data.articles.slice(0, 5).forEach(article => {
+                        const li = document.createElement('li');
+                        li.textContent = article.title;
+                        newsList.appendChild(li);
+                    });
+                    newsList.classList.add('show');
+                })
+                .catch(error => console.error('Error fetching news:', error));
+
+            // Open the news page in a new tab
+            window.open(`https://news.google.com/search?q=${encodeURIComponent(location)}&hl=en-CA&gl=CA&ceid=CA%3Aen`, '_blank');
+        }
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

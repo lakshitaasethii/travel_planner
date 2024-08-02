@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourly - User Bookings</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+    <!-- custom css link -->
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="./src/css/userBookings.css">
+
+    <!-- google font link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body id="top">
+
+    <!-- HEADER -->
+    <header class="header-main" id="header-main" data-header>
+    </header>
+
+    <!-- MAIN -->
+    <div id="user-bookings" class="user-bookings">
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <img src="./src/img/logo.svg" alt="Tourly logo">
+                    </a>
+                    <p class="footer-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo iste magnam voluptas. Dolorem facere perferendis id deleniti. Saepe voluptates dolore repellendus amet, distinctio impedit asperiores?</p>
+                </div>
+                <div class="footer-contact">
+                    <h4 class="contact-title">Contact Us</h4>
+                    <p class="contact-text">Feel free to contact and reach us !!</p>
+                    <ul>
+                        <li class="contact-item"><ion-icon name="call-outline"></ion-icon><a href="tel:+01123456790" class="contact-link">+1 (587) 878-1006</a></li>
+                        <li class="contact-item"><ion-icon name="mail-outline"></ion-icon><a href="mailto:sample@email.com" class="contact-link">sample@email.com</a></li>
+                        <li class="contact-item"><ion-icon name="location-outline"></ion-icon><address>36st NE Calgary, AB</address></li>
+                    </ul>
+                </div>
+                <div class="footer-form">
+                    <p class="form-text">Subscribe our newsletter for more update & news !!</p>
+                    <form action="" class="form-wrapper">
+                        <input type="email" name="email" class="input-field" placeholder="Enter Your Email" required>
+                        <button type="submit" class="btn btn-secondary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p class="copyright">&copy; 2024 <a href="">samreetvirk</a>. All rights reserved</p>
+                <ul class="footer-bottom-list">
+                    <li><a href="#" class="footer-bottom-link">Privacy Policy</a></li>
+                    <li><a href="#" class="footer-bottom-link">Term & Condition</a></li>
+                    <li><a href="#" class="footer-bottom-link">FAQ</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Go to top button -->
+    <a href="#top" class="go-top" data-go-top>
+        <ion-icon name="chevron-up-outline"></ion-icon>
+    </a>
+
+    <!-- custom js link -->
+    <script type="module" src="./src/js/header.js"></script>
+    <script type="module" src="./src/js/userBookings.js"></script>
+    <script type="module" src="./src/js/auth-context.js"></script>
+    <script type="module" src="./src/js/firebase.js"></script>
+    <script src="./src/js/script.js"></script>
+
+    <!-- ionicon link -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
+
