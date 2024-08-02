@@ -221,9 +221,8 @@ body {
   left: 0;
   width: 100%;
   transition: var(--transition);
-  border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
   padding-block: 15px;
-  z-index: 1;
+  z-index: -1;
 }
 
 .header.active .header-top {
@@ -231,7 +230,8 @@ body {
   background: var(--gunmetal);
 }
 
-.header-top .container {
+.header-top .head-container {
+  padding: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-items: flex-start;
@@ -288,11 +288,13 @@ body {
   border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
 }
 
-.header-bottom .container {
+.header-bottom .head-container {
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-block: 15px;
+  padding-left: 100px;
 }
 
 .search-container {
@@ -308,12 +310,15 @@ body {
   opacity: 0;
 }
 
+.popular-packages-title {
+    color: white;
+}
 .search-bar.expanded {
-  width: 200px;
-  background: white;
-  opacity: 1;
-  border-radius: 25px;
-  padding-right: 5px;
+    width: 200px;
+    background: white;
+    opacity: 1;
+    border-radius: 25px;
+    padding-right: 5px;
 }
 
 .social-list {
@@ -589,6 +594,7 @@ body {
   background: var(--cultured);
   overflow: hidden;
   border-radius: 15px;
+  margin-bottom: 25px;
 }
 
 .package-card .card-banner {
@@ -701,6 +707,7 @@ body {
 
 .package .btn {
   margin-inline: auto;
+  margin-bottom: 10px;
 }
 
 /*-----------------------------------*\
@@ -1417,7 +1424,7 @@ address {
 }
 
 #results {
-  margin-top: 50px;
+  margin-top: 90px;
   padding: 15px; /* Padding inside the container */
   display: flex;
   flex-direction: column; /* Make children descend vertically */
@@ -1428,9 +1435,10 @@ address {
 */
 
 .tour-content {
-  display: block;
+  display: contents;
   width: 65%;
-  margin-top: 85px;
+  margin-top: 115px;
+  margin-bottom: 50px;
 }
 
 #tour-page {
@@ -1620,4 +1628,10 @@ address {
 
 .contact-info ul li ion-icon {
   margin-right: 10px;
+}
+
+.tour-title {
+    color: white;
+    text-align: center;
+    padding-bottom: 25px;
 }
