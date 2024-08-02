@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const uid = currentUser.uid;
 
-    const response = await fetch(`http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/getUser/${uid}`);
+    const response = await fetch(`https://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/getUser/${uid}`);
     if (!response.ok) {
         console.error('Failed to fetch user information.');
         return;
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             userID: uid
         };
 
-        const bookingResponse = await fetch(`http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/bookTour`, {
+        const bookingResponse = await fetch(`https://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/bookTour`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
