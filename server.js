@@ -7,6 +7,14 @@ const port = process.env.PORT || 3080;
 
 app.use(express.static(__dirname));
 
+app.use(express.static('public', {
+    setHeaders: (res, path) => {
+        if (path.endsWith('.js')) {
+            res.setHeader('Content-Type', 'application/javascript');
+        }
+    }
+}));
+
 app.use('/js', express.static(path.join(__dirname, 'src', 'js')));
 
 app.get('/api/data', (req, res) => {
@@ -19,4 +27,3 @@ app.get('*', (req, res) => {
 
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
-});
