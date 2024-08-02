@@ -1,12 +1,12 @@
 'use strict';
 
-import { user, checkAuthState } from "./auth-context.js";
+import { user, firebaseSignOut, checkAuthState } from "./auth-context.js";
 
 const headerHTML = `
 <header class="header" data-header>
     <div class="overlay" data-overlay></div>
     <div class="header-top">
-        <div class="container">
+        <div class="head-container">
             <a href="tel:+5878781006" class="helpline-box">
                 <div class="icon-box">
                     <ion-icon name="call-outline"></ion-icon>
@@ -33,7 +33,7 @@ const headerHTML = `
         </div>
     </div>
     <div class="header-bottom">
-        <div class="container">
+        <div class="head-container">
             <ul class="social-list">
                 <li><a href="#" class="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
                 <li><a href="#" class="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
@@ -47,16 +47,15 @@ const headerHTML = `
                     </button>
                 </div>
                 <ul class="navbar-list">
-                    <li><a href="#home" class="navbar-link" data-nav-link>home</a></li>
-                    <li><a href="#" class="navbar-link" data-nav-link>about us</a></li>
-                    <li><a href="#destination" class="navbar-link" data-nav-link>destination</a></li>
-                    <li><a href="#package" class="navbar-link" data-nav-link>packages</a></li>
+                    <li><a href="../../index.js" class="navbar-link" data-nav-link>home</a></li>
+                    <li><a href="../../aboutUs.html" class="navbar-link" data-nav-link>about us</a></li>
+                    <li><a href="../../destinationList.html" class="navbar-link" data-nav-link>destinations</a></li>
+                    <li><a href="../../allpackages.html" class="navbar-link" data-nav-link>packages</a></li>
                     <li><a href="#gallery" class="navbar-link" data-nav-link>gallery</a></li>
-                    <li><a href="#contact" class="navbar-link" data-nav-link>contact us</a></li>
+                    <li><a href="../../contact.html" class="navbar-link" data-nav-link>contact us</a></li>
                 </ul>
             </nav>
-            <div class="header-buttons">
-                <button class="btn btn-primary">Book Now</button>
+            <div class="header-buttons" id="header-group">
                 <a href="signin.html" class="btn btn-secondary" id="auth-button">Sign In</a>
             </div>
         </div>
@@ -69,12 +68,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     const headerElement = document.getElementById("header-main");
     if (headerElement) {
         headerElement.innerHTML = headerHTML;
-        console.log("TEST")
     }
     const authButton = document.getElementById("auth-button");
+    const buttonGroup = document.getElementById("header-group");
     const currentUser = user.get();
+
     if (currentUser) {
         authButton.textContent = "Profile";
         authButton.href = "profile.html";
+
+        // Create and append the sign-out button
+        const signOutButton = document.createElement("button");
+        signOutButton.className = "btn btn-secondary";
+        signOutButton.id = "signOut-button";
+        signOutButton.textContent = "Sign Out";
+        signOutButton.addEventListener("click", async () => {
+            await firebaseSignOut();
+            location.reload(); // Refresh the page
+        });
+        buttonGroup.appendChild(signOutButton);
     }
 });
