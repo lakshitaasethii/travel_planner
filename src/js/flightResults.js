@@ -29,9 +29,10 @@ document.addEventListener("DOMContentLoaded", function () {
                                 <h2>${flight.departLoc} at ${formattedDepartDate}</h2>
                                 <p>Departs from ${flight.arriveLoc} at ${formattedArriveDate}</p>
                                 <p><strong>Company: </strong>${flight.flightCompany}</p>
+                                <button class="btn btn-primary">Buy Tickets From Third Party</button>
                             `;
                             resultItem.addEventListener('click', function () {
-                                window.location.href = `flight.html?id=$encodeURIComponent(flight.id)`; // When pressed, buttons redirect to flight.html
+                                window.location.href = `flight.html?id=${flight.id}`; // When pressed, buttons redirect to flight.html
                             });
                             resultsDiv.appendChild(resultItem); // Appends results to div with id 'results'
                         });
