@@ -1,63 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Customer Profile</title>
+    <link rel="stylesheet" href="src/css/style.css" />
     <link rel="stylesheet" href="src/css/profile.css" />
-  </head>
-  <body>
+</head>
+<body>
+    <div class="header-main" id="header-main" data-header>
+    </div>
     <div class="container">
-      <h1>Customer Profile</h1>
-      <div class="profile-section">
-        <h2>Personal Details</h2>
-        <form id="personal-details-form">
-          <label for="name">Name:</label>
-          <input type="text" id="name" name="name" required />
-          <label for="dob">Date of birth: </label>
-          <input type="date" id="dob" name="Dob" required />
-          <label for="number"> Contact No.</label>
-          <input type="number" id="number" name="number" required />
-          <label for="email">Email:</label>
-          <input type="email" id="email" name="email" required />
-          <button type="submit">Save</button>
-        </form>
-      </div>
+        <h1>Customer Profile</h1>
+        <div class="profile-section">
+            <h2>Personal Details</h2>
+            <form id="personal-details-form">
+                <label for="firstname">First Name:</label>
+                <input type="text" id="firstname" name="firstname" required />
+                <label for="lastname">Last Name:</label>
+                <input type="text" id="lastname" name="lastname" required />
+                <label for="dob">Date of birth: </label>
+                <input type="date" id="dob" name="Dob" required />
+                <label for="number"> Contact No.</label>
+                <input type="number" id="number" name="number" required />
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required />
+                <button type="submit" class="profile-button">Save</button>
+            </form>
+        </div>
 
-      <div class="profile-section">
-        <h2>Change Password</h2>
-        <form id="change-password-form">
-          <label for="current-password">Current Password:</label>
-          <input
-            type="password"
-            id="current-password"
-            name="current-password"
-            required
-          />
-          <label for="new-password">New Password:</label>
-          <input
-            type="password"
-            id="new-password"
-            name="new-password"
-            required
-          />
-          <label for="confirm-password">Confirm Password:</label>
-          <input
-            type="password"
-            id="confirm-password"
-            name="confirm-password"
-            required
-          />
-          <button type="submit">Change Password</button>
-        </form>
-      </div>
+        <div class="profile-section">
+            <h2>Change Password</h2>
+            <form id="change-password-form">
+                <label for="current-password">Current Password:</label>
+                <input type="password"
+                       id="current-password"
+                       name="current-password"
+                       required />
+                <label for="new-password">New Password:</label>
+                <input type="password"
+                       id="new-password"
+                       name="new-password"
+                       required />
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password"
+                       id="confirm-password"
+                       name="confirm-password"
+                       required />
+                <button type="submit" class="profile-button">Change Password</button>
+            </form>
+        </div>
 
-      <div class="profile-section">
-        <h2>Previous Bookings</h2>
-        <button id="previous-bookings">Previous Bookings</button>
-      </div>
+        <div class="profile-section">
+            <a href="./userBookings.html" id="previous-bookings" class="profile-button">Previous Bookings</a>
+        </div>
     </div>
 
     <script src="scripts.js"></script>
-  </body>
+    <script type="module" src="./src/js/header.js"></script>
+    <script type="module" src="./src/js/profile.js"></script>
+    <script type="module" src="./src/js/auth-context.js"></script>
+    <script type="module" src="./src/js/firebase.js"></script>
+    <script src="./src/js/script.js"></script>
+    <script type="module"
+            src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule
+            src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
 </html>
