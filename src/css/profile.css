@@ -1,13 +1,13 @@
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
+  margin-top: 250px;
   padding: 0;
-  background-image: url("src\img\hero-banner.jpg"); /* Replace 'images/background.jpg' with the path to your image */
-  background-size: cover; /* Ensure the image covers the entire background */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-  background-attachment: fixed; /* Make the background image fixed while scrolling */
-  background-position: center; /* Center the background image */
-  color: #333; /* Default text color for readability */
+  background-image: url("../img/hero-banner.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: hsla(0, 0%, 0%, 0.7);
+  background-blend-mode: overlay;
 }
 
 .container {
@@ -18,8 +18,8 @@ body {
     255,
     255,
     255,
-    0.9
-  ); /* Semi-transparent white background for better readability */
+    1
+  );
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
@@ -48,7 +48,7 @@ input {
   border-radius: 4px;
 }
 
-button {
+.profile-button {
   padding: 10px 20px;
   border: none;
   background-color: #007bff; /* Blue background color for buttons */
@@ -57,7 +57,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+.profile-button:hover {
   background-color: #0056b3; /* Darker blue for hover effect */
 }
 
@@ -65,3 +65,5 @@ button:hover {
   display: block;
   margin: 20px 0;
 }
+
+
