@@ -4,7 +4,7 @@ import { user, checkAuthState } from "./auth-context.js";
 document.addEventListener("DOMContentLoaded", async function () {
     await checkAuthState();
     const currentUser = user.get();
-    fetch('http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/getPackages')
+    fetch('https://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/getPackages')
         .then(response => response.json())
         .then(data => {
             console.log(data[0]);
