@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     flightBtn.addEventListener("click", function () {
         const searchTerm = destination.airport;
         if (searchTerm) {
-            fetch(`http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/searchFlightArriveLoc/${encodeURIComponent(searchTerm)}`)
+            fetch(`https://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/searchFlightArriveLoc/${encodeURIComponent(searchTerm)}`)
                 .then(response => response.json())
                 .then(data => {
                     const encodedData = encodeURIComponent(JSON.stringify(data));
