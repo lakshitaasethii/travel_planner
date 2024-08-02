@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     const uid = currentUser.uid;
 
     try {
-        const response = await fetch(`http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/getBookings/${uid}`);
+        const response = await fetch(`https://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/getBookings/${uid}`);
         if (!response.ok) {
             throw new Error('Failed to fetch bookings.');
         }
