@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (searchBar.classList.contains("expanded")) {
             const searchTerm = searchBar.value;
             if (searchTerm) {
-                fetch(`http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/searchFlightArriveLoc/${encodeURIComponent(searchTerm)}`) // Will need to hide this
+                fetch(`https://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/searchFlightArriveLoc/${encodeURIComponent(searchTerm)}`) // Will need to hide this
                     .then(response => response.json())
                     .then(data => {
                         console.log(data); // Console log for testing
