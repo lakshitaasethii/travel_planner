@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const checkin = document.getElementById('tour-checkin').value.trim();
         const checkout = document.getElementById('tour-checkout').value.trim();
 
-        const fetchUrl = `http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/searchTour?destination=${encodeURIComponent(destination)}&people=${people}&checkin=${checkin}&checkout=${checkout}`;
+        const fetchUrl = `https://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/searchTour?destination=${encodeURIComponent(destination)}&people=${people}&checkin=${checkin}&checkout=${checkout}`;
 
         fetch(fetchUrl)
             .then(response => {
