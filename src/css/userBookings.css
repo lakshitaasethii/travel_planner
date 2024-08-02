@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 0;
+    background-image: url("../img/hero-banner.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: hsla(0, 0%, 0%, 0.7);
+    background-blend-mode: overlay;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+    .container h1 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+.user-bookings {
+    margin-top: 150px;
+    background-color: white;
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.booking-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+    .booking-card h3 {
+        margin-top: 0;
+        font-size: 1.5rem;
+        color: #333;
+    }
+
+    .booking-card p {
+        margin: 5px 0;
+        font-size: 1rem;
+        color: #555;
+    }
+
+        .booking-card p strong {
+            color: #333;
+        }
+
+/* Adjusting for smaller screens */
+@media (max-width: 600px) {
+    .booking-card {
+        padding: 10px;
+    }
+
+        .booking-card h3 {
+            font-size: 1.25rem;
+        }
+
+        .booking-card p {
+            font-size: 0.875rem;
+        }
+}

@@ -1,0 +1,78 @@
+body {
+    background-image: url("../img/hero-banner.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: hsla(0, 0%, 0%, 0.7);
+    background-blend-mode: overlay;
+}
+
+.package-information {
+    max-width: 800px;
+    margin: 0 auto;
+    margin-top: 170px;
+    margin-bottom: 50px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+    .package-information h2 {
+        font-size: 2em;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .package-information .card-banner {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+        .package-information .card-banner img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+    .package-information p {
+        font-size: 1.1em;
+        margin-bottom: 10px;
+        color: #555;
+    }
+
+        .package-information p strong {
+            font-weight: bold;
+            color: #333;
+        }
+
+    .package-information .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 20px;
+        font-size: 1em;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .package-information .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+        .package-information .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .package-information .btn-secondary {
+        background-color: #6c757d;
+        color: #fff;
+    }
+
+        .package-information .btn-secondary:hover {
+            background-color: #565e64;
+        }

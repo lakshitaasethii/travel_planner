@@ -1,0 +1,16 @@
+.hero {
+    min-height:430px;
+}
+
+@media (min-width: 1200px) {
+    /**
+   * CUSTOM PROPERTY
+   */
+
+    :root {
+        /**
+     * spacing
+     */
+
+        --section-padding: 0px;
+    }

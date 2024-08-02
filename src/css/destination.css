@@ -1,0 +1,136 @@
+/* destination.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: 150px;
+    background-image: url("../img/hero-banner.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: hsla(0, 0%, 0%, 0.7);
+    background-blend-mode: overlay;
+}
+
+#weather {
+    color: black;
+    display: flex;
+}
+
+h1 {
+    font-size: 5em; /* Increased header size */
+    font-weight: bold;
+    background-color: rgb(5, 114, 165);
+    color: white;
+    margin-bottom: 20px; /* Space below header */
+    animation: fadeInUp 1s ease-out;
+}
+
+h2 {
+    font-size: 1em; /* Increased header size */
+    font-weight: bold;
+    background-color: rgb(5, 114, 165);
+    color: white;
+    animation: fadeInUp 1s ease-out;
+}
+
+h3 {
+    font-size: 1em; /* Increased header size */
+    font-weight: bold;
+    background-color: rgb(5, 114, 165);
+    color: white;
+    animation: fadeInUp 1s ease-out;
+}
+
+.destcontainer {
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 900px; /* Increased max-width for better spacing */
+    width: 100%;
+    text-align: center;
+    overflow: hidden; /* Ensure content fits within the container */
+}
+
+.header-animation {
+    font-size: 4em; /* Increased header size */
+    font-weight: bold;
+    color: #333;
+    animation: fadeInUp 1s ease-out;
+    margin-bottom: 20px; /* Space below header */
+    white-space: nowrap; /* Prevent text from wrapping */
+    z-index: 1; /* Ensure header is on top of other content */
+    position: relative; /* Ensure proper positioning */
+}
+
+.destination-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Ensure proper positioning relative to the header */
+    z-index: 0; /* Content below the header */
+}
+
+.destination-image img {
+    max-width: 600px; /* Maximum width for the image */
+    width: 100%;
+    height: 200px; /* Adjust the height as needed */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border-radius: 5px;
+}
+
+.additional-info {
+    margin-top: 20px;
+}
+
+.weather-btn, .news-btn, #bookFlightBtn, .book-now-btn {
+    display: inline-block;
+    margin: 10px 5px;
+    padding: 10px 20px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+    .weather-btn:hover, .news-btn:hover, #bookFlightBtn:hover, .book-now-btn:hover {
+        background-color: #0056b3;
+    }
+
+#weather, #local-news {
+    margin-top: 10px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+}
+
+    #local-news li {
+        list-style: none;
+        margin-bottom: 5px;
+    }
+
+.show {
+    opacity: 1;
+    max-height: 200px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

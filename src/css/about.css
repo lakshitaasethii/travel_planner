@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url("../img/hero-banner.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-color: hsla(0, 0%, 0%, 0.7);
+    background-blend-mode: overlay;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin-top: 150px;
+}
+
+.about-us {
+  max-width: 800px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.about-us h1 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.about-us .content p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.about-us .image-section {
+  margin: 20px 0;
+}
+
+.about-us .image-section img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.about-us .bottom-buttons {
+  margin: 20px 0;
+}
+
+.about-us .bottom-buttons button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.about-us .bottom-buttons button:hover {
+  background-color: #0056b3;
+}
+
+.about-us .bottom-buttons #more-text {
+  margin-top: 20px;
+  color: #666;
+  display: none;
+}
+
+.about-us .social {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.about-us .social a {
+  margin: 0 10px;
+  color: #333;
+  font-size: 24px;
+  transition: color 0.3s;
+}
+
+.about-us .social a:hover {
+  color: #007bff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .about-us {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-us {
+    padding: 5px;
+  }
+}
