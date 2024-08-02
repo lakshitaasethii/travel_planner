@@ -58,7 +58,7 @@ const firebaseSignOut = () => {
 const checkAuthState = async () => {
     const token = localStorage.getItem("token");
     if (token) {
-        const response = await fetch("http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/verifyToken", {
+        const response = await fetch("https://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/verifyToken", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
