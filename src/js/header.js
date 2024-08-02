@@ -47,7 +47,7 @@ const headerHTML = `
                     </button>
                 </div>
                 <ul class="navbar-list">
-                    <li><a href="../../index.js" class="navbar-link" data-nav-link>home</a></li>
+                    <li><a href="../../index.html" class="navbar-link" data-nav-link>home</a></li>
                     <li><a href="../../aboutUs.html" class="navbar-link" data-nav-link>about us</a></li>
                     <li><a href="../../destinationList.html" class="navbar-link" data-nav-link>destinations</a></li>
                     <li><a href="../../allpackages.html" class="navbar-link" data-nav-link>packages</a></li>
