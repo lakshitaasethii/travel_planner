@@ -4,18 +4,24 @@ import { user, checkAuthState } from "./auth-context.js";
 document.addEventListener("DOMContentLoaded", async function () {
     await checkAuthState();
 
-    const packageData = JSON.parse(localStorage.getItem('selectedPackage'));
-    if (!packageData) {
-        console.error('No package data found.');
+    const urlParams = new URLSearchParams(window.location.search);
+    const tourData = JSON.parse(decodeURIComponent(urlParams.get('tourData')));
+
+    if (!tourData) {
+        console.error('No tour data found.');
         return;
     }
 
-    const packageInformationDiv = document.getElementById('package-information');
-    packageInformationDiv.innerHTML = `
-        <h2>${packageData.name}</h2>
-        <p>${packageData.longDescription}</p>
-        <p><strong>Price:</strong> $${packageData.price}</p>
-        <p><strong>Party Size:</strong> ${packageData.partySize}</p>
+    const tourInformationDiv = document.getElementById('tour-information');
+    tourInformationDiv.innerHTML = `
+        <h2>${tourData.location}</h2>
+        <p><strong>Country:</strong> ${tourData.country}</p>
+        <p><strong>Description:</strong> ${tourData.description}</p>
+        <p><strong>Price:</strong> $${tourData.price}</p>
+        <p><strong>Party Size:</strong> ${tourData.partySize}</p>
+        <p><strong>Check-In Date:</strong> ${new Date(tourData.checkIn).toLocaleDateString()}</p>
+        <p><strong>Check-Out Date:</strong> ${new Date(tourData.checkOut).toLocaleDateString()}</p>
+        <p><strong>Rating:</strong> ${tourData.rating}</p>
     `;
 
     const currentUser = user.get();
@@ -40,6 +46,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.getElementById('phone').value = userData.phone || '';
     }
 
+
     document.getElementById('bookingForm').addEventListener('submit', async function (event) {
         event.preventDefault();
         console.log("Form submitted! Redirecting to Stripe...");
@@ -48,12 +55,12 @@ document.addEventListener("DOMContentLoaded", async function () {
             email: document.getElementById('email').value,
             name: `${document.getElementById('firstname').value} ${document.getElementById('lastname').value}`,
             phone: document.getElementById('phone').value,
-            packageID: packageData.name,
+            tourID: tourData.location,
             note: document.getElementById('note').value,
             userID: uid
         };
 
-        const bookingResponse = await fetch(`http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/bookPackage`, {
+        const bookingResponse = await fetch(`http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/bookTour`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -67,6 +74,6 @@ document.addEventListener("DOMContentLoaded", async function () {
             console.error('Failed to insert booking entry.');
         }
 
-        window.location.href = packageData.pay;
+        window.location.href = tourData.pay;
     });
 });
