@@ -1,28 +1,18 @@
-// Importing necessary functions from Firebase SDK
-// 'initializeApp' is used to initialize the Firebase app with a given configuration.
-import { initializeApp } from "firebase/app";
-// Import 'getAuth' function for Firebase authentication.
-// This is used to initialize the authentication service.
-import { getAuth } from "firebase/auth";
-require(dotenv).config;
+'use strict';
 
-// Your web app's Firebase configuration
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-auth.js";
 
 const firebaseConfig = {
-    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
-    measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+    apiKey: "AIzaSyB7oylUmhmN_22tOSv4iDyf75HAgw-O1a0",
+    authDomain: "tourly-60d26.firebaseapp.com",
+    projectId: "tourly-60d26",
+    storageBucket: "tourly-60d26.appspot.com",
+    messagingSenderId: "901945997765",
+    appId: "1:901945997765:web:9c1ba1531245f2423b73ac",
+    measurementId: "G-HDHQEEJYPE"
 };
 
-
-// Initializing the Firebase application with the configuration object.
-// The 'app' object represents your Firebase application and is used in subsequent Firebase service initializations.
 const app = initializeApp(firebaseConfig);
-
-// Initializing Firebase authentication service and exporting it.
-// 'auth' is an instance of Firebase Auth service, used for handling user authentication.
 export const auth = getAuth(app);
+export default app;
