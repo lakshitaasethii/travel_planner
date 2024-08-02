@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (data.length > 0) {
             data.forEach(item => {
-                fetch(`http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/getFlightById/${encodeURIComponent(item.id)}`) // Will need to hide this
+                fetch(`https://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/getFlightById/${encodeURIComponent(item.id)}`) // Will need to hide this
                     .then(response => response.json())
                     .then(flightData => {
                         flightData.forEach(flight => {
