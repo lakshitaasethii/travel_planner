@@ -1,4 +1,7 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+'use strict';
+
+import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.1.1/firebase-auth.js";
+import { auth } from "./firebase.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const signUpForm = document.querySelector(".signin-form");
@@ -17,9 +20,36 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
-            alert("Signed up successfully!");
-            window.location.href = "../index.html";
+            // Create user with Firebase
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            // Prepare user data for server
+            const userData = {
+                id: user.uid,
+                username: username || null,
+                email: email,
+                phoneNumber: null,
+                firstName: null,
+                lastName: null,
+                dob: null
+            };
+
+            // Send user data to server
+            const response = await fetch("http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/createUser", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            });
+
+            if (response.ok) {
+                alert("Signed up successfully!");
+                window.location.href = "../index.html";
+            } else {
+                throw new Error('Failed to create user in the database.');
+            }
         } catch (error) {
             console.error("Error signing up: ", error);
             alert("Failed to sign up. Please try again.");
