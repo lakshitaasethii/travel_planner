@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         return;
     }
 
-    fetch(`http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/getBookings?userID=${encodeURIComponent(currentUser.id)}`)
+    fetch(`https://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/getBookings?userID=${encodeURIComponent(currentUser.id)}`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
