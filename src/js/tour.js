@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (tourId) {
         const data = JSON.parse(tourId);
-        fetch(`http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/getTourById/${encodeURIComponent(data)}`)
+        fetch(`https://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/getTourById/${encodeURIComponent(data)}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! Status: ${response.status}`);
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         window.location.href = `tourBooking.html?tourData=${encodedData}`;
                     });
 
-                    fetch(`http://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/searchFlightArriveLoc/${encodeURIComponent(tourData.airport)}`)
+                    fetch(`https://ec2-15-223-1-70.ca-central-1.compute.amazonaws.com:3000/searchFlightArriveLoc/${encodeURIComponent(tourData.airport)}`)
                         .then(response => response.json())
                         .then(flights => {
                             console.log('Received flight data:', flights);
